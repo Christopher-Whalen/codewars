@@ -14,6 +14,6 @@ def is_isogram(string):
         return False
 """
 
-#Best Practice Solution
+#Best Practice Solution, Users: madbook, Kamyk, hiasen, dia_c, staticor, lancelote (plus 132 more warriors)
 def is_isogram(string):
     return len(string) == len(set(string.lower()))
