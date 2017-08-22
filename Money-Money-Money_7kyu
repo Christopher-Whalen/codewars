@@ -1,0 +1,77 @@
+"""
+Description: Mr. Scrooge has a sum of money 'P' that [he] 
+wants to invest, and he wants to know how many years 'Y' 
+this sum has to be kept in the bank in order for this sum 
+of money to amount to 'D'.
+
+The sum is kept for 'Y' years in the bank where interest 
+'I' is paid yearly, and the new sum is re-invested yearly 
+after paying tax 'T'
+
+Note that the principal is not taxed but only the year's 
+accrued interest
+
+Example:
+
+  Let P be the Principal = 1000.00      
+  Let I be the Interest Rate = 0.05      
+  Let T be the Tax Rate = 0.18      
+  Let D be the Desired Sum = 1100.00
+
+After 1st Year -->
+  P = 1041.00
+After 2nd Year -->
+  P = 1083.86
+After 3rd Year -->
+  P = 1128.30
+"""
+
+"""
+#My Solution (I played around with different outputs a bit here.)
+def calculate_years(principal, interest, tax, desired):
+
+    time = 0
+
+    while principal < desired:
+        annualInterest = 0.0
+        time += 1
+
+        """Compounded annually, annual interest is I = P(1+r)^(t) - P
+        Each # line below can be uncommented for console output (helped me with debugging)"""
+
+        """Print the principal at the start of each year"""
+        #print("$" + str(principal) + " is now the current principal.")
+
+        """Print the total amount of interest accrued during a one year period"""
+        annualInterest = round(principal * (1 + interest) ** (1) - principal, 2)
+        #print("$" + str(annualInterest) + " in interest accrued for year " + str(time) + ".") 
+
+        """The new principal is the original principal plus the annual interest after tax"""
+        principal = round(principal + (annualInterest * (1 - tax)), 2)
+
+        """Amount of tax paid, realized interest, and new principal can be printed with the lines below""" 
+        #paidTax = round(annualInterest * tax, 2)
+        #print("$" + str(paidTax) + " in tax to paid.")
+        
+        #realizedInterest = round(annualInterest * (1 - tax), 2)
+        #print("$" + str(realizedInterest) + " realized interest after tax.")
+        
+        #print("$" + str(principal) + " is the total principal after " + str(time) + " years.")
+
+    """Print the total years to acheive the desired amount"""
+    #print(str(time) + " years to reach $" + str(desired) + ".")
+    
+    return time
+    """
+    
+    
+    #Best Practice Solution, Users: hchokshi, jonathan-j-lee, Cronokirby, Robbentheking, tiffanydu31, curlew77 (plus 2 more warriors)
+    
+    def calculate_years(principal, interest, tax, desired):
+    years = 0
+    
+    while principal < desired:
+        principal += (interest * principal) * (1 - tax)
+        years += 1
+        
+    return years
