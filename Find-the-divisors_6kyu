@@ -1,0 +1,40 @@
+"""
+Description: Create a function named divisors/Divisors that takes 
+an integer and returns an array with all of the integer's divisors
+(except for 1 and the number itself). If the number is prime return 
+the string '(integer) is prime' (null in C#) (use Either String a 
+in Haskell and Result<Vec<u32>, String> in Rust).
+
+Example:
+
+divisors(12); #should return [2,3,4,6]
+divisors(25); #should return [5]
+divisors(13); #should return "13 is prime"
+You can assume that you will only get positive integers as inputs.
+"""
+
+"""
+#My Solution
+import math
+import string
+
+def divisors(x):
+    divList = []
+    y = 1
+    while y <= math.sqrt(x):
+        if (x % y == 0) and (y != (1 or x)):
+            divList.append(y)
+            divList.append(int(x / y))
+        y += 1
+    if len(divList) == 0:
+        return str(x) + " is prime"
+    else:
+        return sorted(divList)
+"""
+
+#Best Practice Solution, Users: jhoffner, kwy95, master_hibobby, Pruebas, kenwood
+def divisors(num):
+    l = [a for a in range(2,num) if num%a == 0]
+    if len(l) == 0:
+        return str(num) + " is prime"
+    return l
