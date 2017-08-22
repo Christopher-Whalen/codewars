@@ -1,0 +1,7 @@
+#Description: Given an array of integers your solution should find the smallest integer.
+
+#My Solution
+def findSmallestInt(arr):
+    return min(arr)
+    
+#Got the best practice solution!
