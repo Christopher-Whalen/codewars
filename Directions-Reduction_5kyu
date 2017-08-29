@@ -1,0 +1,26 @@
+#IN PROGRESS!
+
+def dirReduc(arr):
+    i = 0
+    reducedDirections = []
+    #While i is less than array length (len(a) = 7)
+    while i < len(arr):
+        #If i is also less than array length minus 1
+        if i < (len(arr) - 1):
+            #If arr[i] and arr[i + 1] contradict
+            if (arr[i] == "NORTH" and arr[i + 1] == "SOUTH") or (arr[i] == "SOUTH" and arr[i + 1] == "NORTH") or (arr[i] == "EAST" and arr[i + 1] == "WEST") or (arr[i] == "WEST" and arr[i + 1] == "EAST"):
+                #Move on to the 2nd next entry in arr
+                i += 2
+            else:
+                #Or else write the non-contradicting entry into reducedDirections
+                reducedDirections[i] = arr[i]
+                #Move on to the next entry in arr
+                i += 1
+        #If i is not less than the array length minus 1
+        else:
+            #Write the final entry into reducedDirections
+            reducedDirections[i] = arr[i]
+    print(reducedDirections)
+
+a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
+dirReduc(a)
